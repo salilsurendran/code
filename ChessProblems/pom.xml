@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.salil</groupId>
+    <artifactId>chessproblems</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <dimension>5</dimension>
+        <startRow>3</startRow>
+        <startColumn>3</startColumn>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>-Djava.util.logging.config.file=${basedir}/src/main/resources/logging.properties
+                        </argument>
+                        <argument>com.salil.chessproblems.KnightsTour</argument>
+                        <argument>${dimension}</argument>
+                        <argument>${startRow}</argument>
+                        <argument>${startColumn}</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+
+            <!--<plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    &lt;!&ndash;<includeProjectDependencies>true</includeProjectDependencies>&ndash;&gt;
+                    <mainClass>com.salil.chessproblems.KnightsTour</mainClass>
+                    &lt;!&ndash;<additionalClasspathElements>
+                        <additionalClasspathElement>${basedir}/src/main/resources</additionalClasspathElement>
+                    </additionalClasspathElements>&ndash;&gt;
+                    <systemProperties>
+                        <systemProperty>
+                            <key>java.util.logging.config.file</key>
+                            <value>${basedir}/src/main/resources/logging.properties</value>
+                        </systemProperty>
+                    </systemProperties>
+                    <arguments>
+                        <argument>5</argument>
+                        <argument>3</argument>
+                        <argument>3</argument>
+                    </arguments>
+                </configuration>
+            </plugin>-->
+        </plugins>
+    </build>
+    <!-- <profiles>
+         <profile>
+             <id>default</id>
+             <properties>
+                 <env>default</env>
+                 <dimension>5</dimension>
+                 <startRow>3</startRow>
+                 <startColumn>3</startColumn>
+             </properties>
+             <activation>
+                 <activeByDefault>true</activeByDefault>
+             </activation>
+         </profile>
+     </profiles>-->
+</project>
